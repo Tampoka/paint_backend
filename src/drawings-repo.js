@@ -39,5 +39,5 @@ module.exports = {
     getDrawings,
     getDrawingById,
     addDrawing,
-
+    deleteDrawing
 };
