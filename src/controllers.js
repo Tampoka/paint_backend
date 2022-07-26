@@ -29,9 +29,9 @@ async function getProject(req, res) {
 
 async function addProject(req, res) {
     try {
-        await addDrawing(req.body.name,req.body.strokes, req.body.image)
-        // res.send(project)
-        res.send({success: true})
+        await addDrawing(req.body.name, req.body.strokes, req.body.image)
+        const projects = await getDrawings()
+        res.send({success: true, projects})
     } catch (error) {
         console.log(error)
         return ({success: false, error})
