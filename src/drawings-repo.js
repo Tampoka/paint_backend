@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const drawingsSchema = new mongoose.Schema({
     image: String,
     name: String,
-    id: String,
     strokes: [
         {
             points: [
@@ -17,5 +16,28 @@ const drawingsSchema = new mongoose.Schema({
     ],
 })
 
-const Drawing=mongoose.model('drawings',drawingsSchema)
+const Drawing = mongoose.model('drawings', drawingsSchema)
 
+const getDrawings = () => {
+    return Drawing.find()
+}
+
+const getDrawingById = (id) => {
+    return Drawing.findOne({_id: id})
+}
+
+const addDrawing = (name) => {
+    const drawing = new Drawing({name})
+    return drawing.save()
+}
+
+const deleteDrawing = (id) => {
+    return Drawing.deleteOne({_id: id})
+}
+
+module.exports = {
+    getDrawings,
+    getDrawingById,
+    addDrawing,
+
+};
