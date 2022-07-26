@@ -2,7 +2,7 @@ const {
     getDrawings,
     getDrawingById,
     addDrawing,
-    deleteDrawing
+    deleteDrawing, getDrawingByName
 } = require('./drawings-repo');
 
 
@@ -19,22 +19,22 @@ async function getProjects(req, res) {
 async function getProject(req, res) {
     try {
         const project = await getDrawingById()
-        res.send({success: true, project})
+        res.send({project})
     } catch
         (error) {
         console.log(error)
-        res.send({success: false, error})
+        res.send(error)
     }
 }
 
 async function addProject(req, res) {
     try {
         await addDrawing(req.body.name, req.body.strokes, req.body.image)
-        const projects = await getDrawings()
-        res.send({success: true, projects})
+        const project = await getDrawingByName(req.body.name)
+        res.send({project})
     } catch (error) {
         console.log(error)
-        return ({success: false, error})
+        return (error)
     }
 }
 
@@ -43,7 +43,7 @@ async function deleteProject(req, res) {
         await deleteDrawing(req.params.id)
         res.sendStatus({success: true})
     } catch (error) {
-        return ({success: false, error})
+        return (error)
     }
 }
 
