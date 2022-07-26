@@ -11,19 +11,19 @@ async function getProjects(req, res) {
         const projects = await getDrawings()
         res.send(projects)
     } catch (error) {
-        console.log(error);
-        res.send(error);
+        console.log(error)
+        res.send(error)
     }
 }
 
 async function getProject(req, res) {
     try {
         const project = await getDrawingById()
-        res.send(project)
+        res.send({success: true, project})
     } catch
         (error) {
-        console.log(error);
-        res.send(error);
+        console.log(error)
+        res.send({success: false, error})
     }
 }
 
@@ -33,17 +33,17 @@ async function addProject(req, res) {
         // res.send(project)
         res.send({success: true})
     } catch (error) {
-        console.log(error);
-        return error;
+        console.log(error)
+        return ({success: false, error})
     }
 }
 
 async function deleteProject(req, res) {
     try {
         await deleteDrawing(req.params.id)
-        res.sendStatus(204);
+        res.sendStatus({success: true})
     } catch (error) {
-        res.send(error);
+        return ({success: false, error})
     }
 }
 
