@@ -29,7 +29,7 @@ async function getProject(req, res) {
 
 async function addProject(req, res) {
     try {
-        await addDrawing(req.body.name)
+        await addDrawing(req.body.name,req.body.strokes, req.body.image)
         // res.send(project)
         res.send({success: true})
     } catch (error) {

@@ -26,8 +26,8 @@ const getDrawingById = (id) => {
     return Drawing.findOne({_id: id})
 }
 
-const addDrawing = (name) => {
-    const drawing = new Drawing({name})
+const addDrawing = (name,strokes,image) => {
+    const drawing = new Drawing({name,strokes,image})
     return drawing.save()
 }
 
