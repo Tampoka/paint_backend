@@ -11,7 +11,6 @@ async function getProjects(req, res) {
         const projects = await getDrawings()
         res.send(projects)
     } catch (error) {
-        console.log(error)
         res.send(error)
     }
 }
@@ -22,7 +21,6 @@ async function getProject(req, res) {
         res.send({project})
     } catch
         (error) {
-        console.log(error)
         res.send(error)
     }
 }
@@ -33,15 +31,14 @@ async function addProject(req, res) {
         const project = await getDrawingByName(req.body.name)
         res.send({project})
     } catch (error) {
-        console.log(error)
         return (error)
     }
 }
 
 async function deleteProject(req, res) {
     try {
-        await deleteDrawing(req.params.id)
-        res.sendStatus({success: true})
+        await getDrawingById(req.param.id)
+        res.send(req.param.id)
     } catch (error) {
         return (error)
     }
