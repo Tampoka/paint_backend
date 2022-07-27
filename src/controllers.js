@@ -37,8 +37,9 @@ async function addProject(req, res) {
 
 async function deleteProject(req, res) {
     try {
-        await getDrawingById(req.param.id)
-        res.send(req.param.id)
+        const id = req.params.id
+        await deleteDrawing(id)
+        res.send({success: true})
     } catch (error) {
         return (error)
     }

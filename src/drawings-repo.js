@@ -30,8 +30,8 @@ const getDrawingByName = (name) => {
     return Drawing.findOne({name})
 }
 
-const addDrawing = (name,strokes,image) => {
-    const drawing = new Drawing({name,strokes,image})
+const addDrawing = (name, strokes, image) => {
+    const drawing = new Drawing({name, strokes, image})
     return drawing.save()
 }
 
